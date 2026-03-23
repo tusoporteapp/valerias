@@ -1,1 +1,15 @@
-eval(decodeURIComponent(escape(atob('CgpmdW5jdGlvbiBzd2l0Y2hWaWV3KHZpZXdOYW1lKSB7CmRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy52aWV3LXNlY3Rpb24nKS5mb3JFYWNoKGVsID0+IHsKZWwuY2xhc3NMaXN0LnJlbW92ZSgnYWN0aXZlJyk7Cn0pOwpjb25zdCB0YXJnZXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndmlldy0nICsgdmlld05hbWUpOwppZiAodGFyZ2V0KSB7CnRhcmdldC5jbGFzc0xpc3QuYWRkKCdhY3RpdmUnKTsKaWYgKHZpZXdOYW1lID09PSAnY2FydCcgJiYgdHlwZW9mIHJlbmRlckN1c3RvbUNhcnQgPT09ICdmdW5jdGlvbicpIHsKcmVuZGVyQ3VzdG9tQ2FydCgpOwp9Cn0Kd2luZG93LnNjcm9sbFRvKHsgdG9wOiAwLCBiZWhhdmlvcjogJ3Ntb290aCcgfSk7Cn0='))));
+﻿
+
+function switchView(viewName) {
+document.querySelectorAll('.view-section').forEach(el => {
+el.classList.remove('active');
+});
+const target = document.getElementById('view-' + viewName);
+if (target) {
+target.classList.add('active');
+if (viewName === 'cart' && typeof renderCustomCart === 'function') {
+renderCustomCart();
+}
+}
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
