@@ -1,0 +1,24 @@
+{
+  "name": "VALERIAS Boutique",
+  "short_name": "VALERIAS",
+  "description": "Tu boutique de moda premium online",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFAFA",
+  "theme_color": "#D57A7E",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "CUADRADO.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "CUADRADO.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
