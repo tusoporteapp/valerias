@@ -187,10 +187,13 @@ const description = apiProduct?.description
 || apiProduct?.body_html
 || apiProduct?.details
 || '';
-const images  = apiProduct?.media?.map(m => m.url || m.sizes?.medium || m.sizes?.large)
-.filter(Boolean) || (domImg ? [domImg] : []);
+const images  = (apiProduct?.media
+?.map(m => m.url || m.sizes?.medium || m.sizes?.large)
+?.filter(Boolean))
+|| (domImg ? [domImg] : []);
 const variants = apiProduct?.variants || [];
 const category = apiProduct?.categories?.[0]?.name || '';
+try {
 currentDetailProduct = {
 id: productId || Math.random().toString(36).substr(2, 9),
 name, price,
@@ -292,6 +295,16 @@ ${shippingHtml}
 ${policyHtml}
 `;
 footer.style.display = 'block';
+} catch(err) {
+body.innerHTML = `
+<div style="padding:1.5rem;text-align:center;">
+<img src="${domImg}" alt="${domName}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:1rem;margin-bottom:1rem;" onerror="this.style.display='none'">
+<h2 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#1f2937;margin:0 0 0.5rem;">${domName}</h2>
+<p style="color:#D57A7E;font-weight:700;font-size:1.1rem;margin:0 0 1rem;">${domPrice > 0 ? domPrice.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}) : ''}</p>
+<p style="font-size:0.85rem;color:#6b7280;">Consulta más información directamente por WhatsApp.</p>
+</div>`;
+footer.style.display = 'block';
+}
 }
 function pdSelectImg(src) {
 document.getElementById('pd-main-img').src = src;
